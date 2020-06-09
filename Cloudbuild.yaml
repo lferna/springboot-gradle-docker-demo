@@ -1,0 +1,11 @@
+steps:
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'gcr.io/alpine-comfort-268715/demo-docker:$BRANCH_NAME-$COMMIT_SHA', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/alpine-comfort-268715/demo-docker"]
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['beta', 'run', 'deploy', 'demo-docker','--platform','managed','--allow-unauthenticated', '--image', 'gcr.io/alpine-comfort-268715/demo-docker:$BRANCH_NAME-$COMMIT_SHA', '--region', 'us-central1']
+options:
+ machineType: 'N1_HIGHCPU_8' 
+   
+    

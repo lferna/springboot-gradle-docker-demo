@@ -11,7 +11,7 @@ public class DemoDockerController {
 	@RequestMapping(value={"/hello"}, method = RequestMethod.GET)
 	public String login(){
 		
-		return "Hola Mundo!";
+		return "Hola Mundo V2!";
 	}
 	
 }
